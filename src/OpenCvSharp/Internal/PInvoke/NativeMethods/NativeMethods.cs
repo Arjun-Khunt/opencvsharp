@@ -209,7 +209,9 @@ public static partial class NativeMethods
     /// <returns></returns>
     public static bool IsWasm()
     {
-#if NET6_0
+#if net6_0
+        return RuntimeInformation.OSArchitecture == Architecture.Wasm;
+#elif net8_0
         return RuntimeInformation.OSArchitecture == Architecture.Wasm;
 #else
             return false;
